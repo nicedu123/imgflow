@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>nicedu123</title>
+	<style>
+		#topic
+		{
+			
+		
+			
+		}
+		.time_style
+		{
+			font-size: 50px;
+			width:80%;
+			height: 500px;
+			background-color: blue;
+			background-image: url("./beijing.jpeg") ;
+			background-position: center;
+	        background-size: cover;
+	        background-repeat: no-repeat;
+	        color: white;
+	        margin-left:10%;
+	        text-align: center;
+	        display:flex;justify-content:center;
+	        position: absolute;
+
+
+	    }
+	    .head_text{
+	    	position: absolute;
+	    	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+		      color:#fff;
+		      /*line-height:25px;*/
+		      letter-spacing:1px;
+		      top: 100px;
+	    }
+	    .user_info
+	    {
+	    	display:flex;justify-content:center;
+		    border: 2px solid #fff;
+		    height: 20%;
+		    padding-top: 1%;
+		    width: 15%;
+		    position: absolute;
+            top: 175px;
+
+	    }
+	    .user_text
+	    {
+	    	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	    	    margin-top: 66px;
+	    		font-size: 49%;
+	    }
+	    
+	    .head_img{
+	    	position: absolute;
+	    	height:60px;
+	    	width:60px;
+	    	border-radius:30px;
+	    }
+		#titleNm
+		{
+	        width:100%;
+	     
+		}
+		.song_text
+		{
+			position: absolute;
+			bottom:90px;
+			font-size: 39%;
+			font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+		}
+		#baidulogo
+		{
+	         margin-top: 0%;
+		      height: 52%;
+		    width: 33%;
+		    margin-left: 63%;
+		}
+		#baiduinput{
+			margin-left: 65%;
+	    height: 17%;
+	    width: 29%;
+
+		}
+		#baidubotton{
+			position: relative;
+			left: 828px;
+		    top: -32px;
+		    height: 32px;
+		    width: 9%;
+
+		}
+		#gglogo{
+			-webkit-transform: scale(0.5);
+			 margin-top: -11%;
+			 margin-left: 77%;
+		}
+		#gginput{
+			     margin-top: 24%;
+	    margin-left: 3%;
+	    height: 25%;
+	    width: 61%;
+
+		}
+		#ggbotton{
+	        position: relative;
+	    left: 0px;
+	    top: 0px;
+	    height: 32px;
+	    width: 19%;
+		}
+		.searchbar
+		{
+			margin-left:5%;
+		}
+	</style>
+	<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+	<div id="topic">
+		<div class="time_style">
+			<span id='show_time' class="head_text"></span>
+				<div  class="user_info">
+					<img class="head_img" src="./touxiang.jpg"/>
+					<span class="user_text">nicedu123</span>
+				</div>
+				<div class="song_text">生活不止眼前的苟且，还有诗和远方的田野。赤手空拳来到人世间，为找到那片海不顾一切。</div>
+		</div>
+	</div>
+	<div id="container">
+    </div>
+
+</body>
+
+<script  src="vue.min.js"></script>
+<script charset="gb2312">
+var img_data = {
+    "data": [{
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%870.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/3.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%872.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/5.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%875.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/3.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%870.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/5.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%873.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/3.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%875.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%872.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/8.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/5.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%873.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/3.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%875.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%872.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/8.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%875.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%872.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/8.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%875.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/4.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/dongtianpiaoxue/%E4%B8%AD%E6%96%872.png"
+    }, {
+        "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/8.png"
+    }]
+}
+var dparent = document.getElementById("container");
+for (var i = 0; i < img_data.data.length; i++) {
+    var dcontent = document.createElement("div"); //创建节点
+    dcontent.className = "box";//为节点添加类名
+    dparent.appendChild(dcontent);//添加根元素
+    var boximg = document.createElement("div");//创建节点
+    boximg.className = "box_img";//为节点添加类名
+    dcontent.appendChild(boximg);//添加根元素
+    var img = document.createElement("img");//创建节点
+    img.src = img_data.data[i].src;//图片加载路径
+    boximg.appendChild(img);//添加根元素
+}
+setTimeout(function(){
+	img_location("container", "box");
+	console.log("aaaaaa")
+},100);
+// img_location("container", "box");//调用函数再一次执行图片的布局
+
+
+function check_csroll() {
+    var dparent = document.getElementById("container"); //获取父元素
+    var dcontent = get_child_element(dparent, "box"); //获得子元素个数
+    var last_content_height = dcontent[dcontent.length - 1].offsetTop; //获取最后一张图片到顶的距离
+    var scroll_top = document.documentElement.scrollTop || document.body.scrollTop; //获取滚动条到顶的距离
+    var page_height = document.documentElement.clientHeight || document.body.clientHeight; //获取屏幕高度
+    //console.log(scroll_top+":"+last_content_height+":"+page_height)
+    if (last_content_height < scroll_top + page_height) {
+        return true;
+    }
+}
+
+function img_location(parent, content) {
+    //取出parent下的所有content全部子元素
+    var dparent = document.getElementById(parent); //获取父元素
+    var dcontent = get_child_element(dparent, content); //获得子元素个数
+    //console.log(dcontent)
+
+    var dec_width = get_width(dparent, dcontent); //固定宽度
+    var image_location = min_image_locatin(dec_width, dcontent) //将图片放在高度最低的图片下
+
+
+}
+
+function get_child_element(parent, content) { //获得子元素个数
+    var content_array = []; //定义数组
+    var all_content = parent.getElementsByTagName("*"); //取得父元素下的的所有子元素
+    for (var i = 0; i < all_content.length; i++) { //历遍所有子元素
+        if (all_content[i].className == content) { //判断子元素的类名是否等于box
+            content_array.push(all_content[i]) //在数组后追加元素
+        }
+    }
+    return content_array;
+}
+
+function get_width(dparent, dcontent) { //固定宽度
+    var img_width = dcontent[1].offsetWidth; //获取图片宽度
+    var win_width = document.documentElement.clientWidth*0.8; //获取屏幕宽度
+    var num_width = Math.floor(win_width / img_width); //获得一排摆的个数 用Math.floor()转换为整数
+    dparent.style.cssText = "width:" + img_width * num_width + "px; margin:0 auto"; //固定屏幕的高并设置居中
+    return num_width;
+
+}
+
+function min_image_locatin(dec_width, dcontent) {
+    var box_height_array = [];
+    for (var i = 0; i < dcontent.length; i++) { //遍历所有图片
+        if (i < dec_width) {
+            box_height_array[i] = dcontent[i].offsetHeight; //取得第一排图片的高度
+        } else {
+            var min_height = Math.min.apply(null, box_height_array); //获取第一排图片中高度最小的图片
+            var min_index = get_min_height(box_height_array, min_height) //函数获得高度最小的图片的位置
+            dcontent[i].style.position = "absolute"; //绝对定位图片
+            dcontent[i].style.top = min_height + "px"; //图片距顶部像素
+            dcontent[i].style.left = dcontent[min_index].offsetLeft + "px"; //图片距左的像素
+            box_height_array[min_index] = box_height_array[min_index] + dcontent[i].offsetHeight; //
+        }
+    }
+
+}
+
+function get_min_height(box_height_array, min_height) {
+    for (var i in box_height_array) {
+        if (box_height_array[i] == min_height) { //循环所有数组的高度 让它等于最小图片的高度 返回i值
+            return i;
+        }
+    }
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function time_line(){
+	var time_Rec=new Date().toLocaleTimeString();
+	var time_RectoE=[];
+	time_RectoE[10]="M";
+	time_RectoE[8]=" ";
+	for(var i=0;i<=7;i++)
+		time_RectoE[i]=time_Rec[i+2];
+	if(time_Rec[0]=='上')
+		{time_RectoE[9]="A";}
+	else {
+		time_RectoE[9]="P";
+	}
+	time_RectoE = time_RectoE.join("");
+    console.log(time_RectoE)
+	var time_div_height = window.innerHeight;
+	var time_div_width = window.innerWidth;
+	var time_line_height;
+	if (time_div_width<900) {
+		time_line_height ={height:time_div_height/4,fontSize:25};
+	};
+	if (time_div_height<700) {
+		time_line_height ={height:time_div_height/4,fontSize:25};
+	};
+    document.getElementById("show_time").innerHTML=time_RectoE;
+	}
+time_line();
+setInterval(time_line, 1000);
+
+</script>
+</html>
