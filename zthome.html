@@ -115,6 +115,16 @@
 		{
 			margin-left:5%;
 		}
+		.box:hover
+		{
+           -webkit-animation:hoverani 0.5s linear both;
+           z-index: 100;
+		}
+		@-webkit-keyframes hoverani{
+			from{-webkit-transform:scale(1);}
+			to{-webkit-transform:scale(1.3);}
+		}
+
 	</style>
 	<link rel="stylesheet" href="index.css" />
 </head>
@@ -201,110 +211,52 @@ var img_data = {
         "src": "https://qnphoto.kagirl.cn/image/bzxc_beta/8.png"
     }]
 }
+
+var lowest = [];
+var lefteach = [];
 var dparent = document.getElementById("container");
-for (var i = 0; i < img_data.data.length; i++) {
-    var dcontent = document.createElement("div"); //创建节点
-    dcontent.className = "box";//为节点添加类名
-    dparent.appendChild(dcontent);//添加根元素
-    var boximg = document.createElement("div");//创建节点
-    boximg.className = "box_img";//为节点添加类名
-    dcontent.appendChild(boximg);//添加根元素
-    var img = document.createElement("img");//创建节点
-    img.src = img_data.data[i].src;//图片加载路径
-    boximg.appendChild(img);//添加根元素
-}
-setTimeout(function(){
-	img_location("container", "box");
-	console.log("aaaaaa")
-},100);
-// img_location("container", "box");//调用函数再一次执行图片的布局
+var window_width = window.innerWidth;
+var dparent_width = window_width*0.8;
+var row_num = parseInt(dparent_width/172);
+var dparent_left = (window_width-row_num*172)/2;
+dparent.style.left=dparent_left+'px';
+dparent.style.width=dparent_width+'px';
+var img_length = img_data.data.length;
 
 
-function check_csroll() {
-    var dparent = document.getElementById("container"); //获取父元素
-    var dcontent = get_child_element(dparent, "box"); //获得子元素个数
-    var last_content_height = dcontent[dcontent.length - 1].offsetTop; //获取最后一张图片到顶的距离
-    var scroll_top = document.documentElement.scrollTop || document.body.scrollTop; //获取滚动条到顶的距离
-    var page_height = document.documentElement.clientHeight || document.body.clientHeight; //获取屏幕高度
-    //console.log(scroll_top+":"+last_content_height+":"+page_height)
-    if (last_content_height < scroll_top + page_height) {
-        return true;
+img_solution(0);
+
+function img_solution(i){
+    var dcontent = document.createElement("div");
+    dcontent.className = "box";
+    dparent.appendChild(dcontent);
+    var boximg = document.createElement("div");
+    boximg.className = "box_img";
+    dcontent.appendChild(boximg);
+    var img = document.createElement("img");
+    img.src = img_data.data[i].src;
+    boximg.appendChild(img);
+    if(i>=row_num)
+    {
+    	var a = lowest.indexOf(Math.min.apply(null,lowest));
+    	dcontent.style.top=lowest[a]+'px';
+    	dcontent.style.left= lefteach[a]+'px';
+    	dcontent.style.position ='absolute';
+    	lowest[a]=lowest[a]+dcontent.offsetHeight;
     }
-}
-
-function img_location(parent, content) {
-    //取出parent下的所有content全部子元素
-    var dparent = document.getElementById(parent); //获取父元素
-    var dcontent = get_child_element(dparent, content); //获得子元素个数
-    //console.log(dcontent)
-
-    var dec_width = get_width(dparent, dcontent); //固定宽度
-    var image_location = min_image_locatin(dec_width, dcontent) //将图片放在高度最低的图片下
-
-
-}
-
-function get_child_element(parent, content) { //获得子元素个数
-    var content_array = []; //定义数组
-    var all_content = parent.getElementsByTagName("*"); //取得父元素下的的所有子元素
-    for (var i = 0; i < all_content.length; i++) { //历遍所有子元素
-        if (all_content[i].className == content) { //判断子元素的类名是否等于box
-            content_array.push(all_content[i]) //在数组后追加元素
-        }
+    else{
+        lefteach.push(dparent.children[i].offsetLeft);
+        lowest.push(dparent.children[i].offsetTop+dparent.children[i].offsetHeight); 
     }
-    return content_array;
+    i++;
+    if(i>=img_length)
+    	return;
+    else{
+    	setTimeout(function(){
+    		img_solution(i);
+    	},100)
+    }  	
 }
-
-function get_width(dparent, dcontent) { //固定宽度
-    var img_width = dcontent[1].offsetWidth; //获取图片宽度
-    var win_width = document.documentElement.clientWidth*0.8; //获取屏幕宽度
-    var num_width = Math.floor(win_width / img_width); //获得一排摆的个数 用Math.floor()转换为整数
-    dparent.style.cssText = "width:" + img_width * num_width + "px; margin:0 auto"; //固定屏幕的高并设置居中
-    return num_width;
-
-}
-
-function min_image_locatin(dec_width, dcontent) {
-    var box_height_array = [];
-    for (var i = 0; i < dcontent.length; i++) { //遍历所有图片
-        if (i < dec_width) {
-            box_height_array[i] = dcontent[i].offsetHeight; //取得第一排图片的高度
-        } else {
-            var min_height = Math.min.apply(null, box_height_array); //获取第一排图片中高度最小的图片
-            var min_index = get_min_height(box_height_array, min_height) //函数获得高度最小的图片的位置
-            dcontent[i].style.position = "absolute"; //绝对定位图片
-            dcontent[i].style.top = min_height + "px"; //图片距顶部像素
-            dcontent[i].style.left = dcontent[min_index].offsetLeft + "px"; //图片距左的像素
-            box_height_array[min_index] = box_height_array[min_index] + dcontent[i].offsetHeight; //
-        }
-    }
-
-}
-
-function get_min_height(box_height_array, min_height) {
-    for (var i in box_height_array) {
-        if (box_height_array[i] == min_height) { //循环所有数组的高度 让它等于最小图片的高度 返回i值
-            return i;
-        }
-    }
-}
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function time_line(){
 	var time_Rec=new Date().toLocaleTimeString();
